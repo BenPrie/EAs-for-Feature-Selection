@@ -39,6 +39,10 @@ class GeneSift:
         # Cast the candidate solution to a boolean array.
         selected_features = [bool(x) for x in individual]
 
+        # Special case where no features are selected.
+        if not any(selected_features):
+            return 0
+
         X = self.X[self.X.columns[selected_features]]
 
         # Split the data into training and testing sets (arbitrarily an 80-20% split).
